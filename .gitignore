@@ -1,0 +1,5 @@
+composer.lock
+vendor/*
+*~
+*.swp
+tests/ZfAssetic/ViewHelper/_public_dir

@@ -1,0 +1,25 @@
+{
+	"name": "zf-assetic",
+	"repositories": [{
+		"type": "package",
+		"package": {
+			"name": "zend/zend",
+			"version": "1.11.11",
+			"source": {
+				"url": "http://framework.zend.com/svn/framework/",
+				"type": "svn",
+				"reference": "standard/tags/release-1.11.11/library/"
+			}
+		}
+	}],
+	"require": {
+		"kriswallsmith/assetic": ">=1.0",
+		"zend/zend": "1.11.11"
+	},
+	"autoload": {
+		"psr-0": {
+			"ZfAssetic": "src/",
+			"Zend": "vendor/zend/zend/"
+		}
+	}
+}
