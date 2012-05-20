@@ -1,5 +1,5 @@
 {
-	"name": "zf-assetic",
+	"name": "ada/zf-assetic",
 	"repositories": [{
 		"type": "package",
 		"package": {
