@@ -29,9 +29,9 @@ class ZfAssetic_ViewHelper_ScriptAssetTest extends PHPUnit_Framework_TestCase {
 
 		$destination = $helper->process();
 
-		$this->assertEquals('/asset/0141522526d6be5302041ffa6093933b.js', $destination);
-		$this->assertFileExists($this->asset_dir . '/0141522526d6be5302041ffa6093933b.js');
-		$this->assertStringEqualsFile($this->asset_dir . '/0141522526d6be5302041ffa6093933b.js', 'var name = "Cedric Lesquir";
+		$this->assertEquals('/asset/1070274549ca38a7a36d0f6e4083bc6b.js', $destination);
+		$this->assertFileExists($this->asset_dir . '/1070274549ca38a7a36d0f6e4083bc6b.js');
+		$this->assertStringEqualsFile($this->asset_dir . '/1070274549ca38a7a36d0f6e4083bc6b.js', 'var name = "Cedric Lesquir";
 
 alert(name);
 ');
@@ -50,7 +50,7 @@ alert(name);
 		echo "<script src=\"/test2.js\"></script>";
 		$helper->captureEnd();
 
-		$this->assertEquals('<script src="/asset/0141522526d6be5302041ffa6093933b.js" type="text/javascript"></script>', $helper->toString());
+		$this->assertEquals('<script src="/asset/1070274549ca38a7a36d0f6e4083bc6b.js" type="text/javascript"></script>', $helper->toString());
 
 	}
 

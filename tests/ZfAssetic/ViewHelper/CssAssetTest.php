@@ -29,9 +29,9 @@ class ZfAssetic_ViewHelper_CssAssetTest extends PHPUnit_Framework_TestCase {
 
 		$destination = $helper->process();
 
-		$this->assertEquals('/asset/685a47f682c104322bafbce77aa6cc31.css', $destination);
-		$this->assertFileExists($this->asset_dir . '/685a47f682c104322bafbce77aa6cc31.css');
-		$this->assertStringEqualsFile($this->asset_dir . '/685a47f682c104322bafbce77aa6cc31.css', '.somerules {}
+		$this->assertEquals('/asset/1f79627b6faaadf8c6cd848430eaed9f.css', $destination);
+		$this->assertFileExists($this->asset_dir . '/1f79627b6faaadf8c6cd848430eaed9f.css');
+		$this->assertStringEqualsFile($this->asset_dir . '/1f79627b6faaadf8c6cd848430eaed9f.css', '.somerules {}
 
 #some-other-rule {
 	background-color: purple;
@@ -47,7 +47,7 @@ class ZfAssetic_ViewHelper_CssAssetTest extends PHPUnit_Framework_TestCase {
 		echo "<link href=\"/test2.css\" rel=\"stylesheet\" type=\"text/css\" />";
 		$helper->captureEnd();
 
-		$this->assertEquals('<link rel="stylesheet" href="/asset/685a47f682c104322bafbce77aa6cc31.css" type="text/css" />', (string)$helper);
+		$this->assertEquals('<link rel="stylesheet" href="/asset/1f79627b6faaadf8c6cd848430eaed9f.css" type="text/css" />', (string)$helper);
 	}
 
 	protected function _getHelper() {

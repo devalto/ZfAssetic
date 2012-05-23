@@ -167,13 +167,12 @@ abstract class ZfAssetic_ViewHelper_AbstractAsset {
 		$factory = $this->getAssetFactory();
 		$asset = $factory->createAsset($this->getAssets());
 
-		$dump = $asset->dump();
-		$hash = md5($dump);
+		$hash = self::getCacheKey($asset);
 		$destination = $this->getAssetDirectory() . '/' . $hash . '.' . $this->getType();
 
 		// Check if the file exists
 		if (!file_exists($destination)) {
-			file_put_contents($destination, $dump);
+			file_put_contents($destination, $asset->dump());
 		}
 
 		$destination = $this->_removePublicPath($destination);
@@ -194,6 +193,31 @@ abstract class ZfAssetic_ViewHelper_AbstractAsset {
 		if (substr($path, 0, strlen($public_path)) == $public_path) {
 			return substr($path, strlen($public_path));
 		}
+	}
+
+	/**
+	 * Stolen from https://github.com/kriswallsmith/assetic/blob/master/src/Assetic/Asset/AssetCache.php
+	 */
+	private static function getCacheKey(\Assetic\Asset\AssetInterface $asset) {
+		$cacheKey  = $asset->getSourceRoot();
+		$cacheKey .= $asset->getSourcePath();
+		$cacheKey .= $asset->getTargetPath();
+		$cacheKey .= $asset->getLastModified();
+
+		foreach ($asset->getFilters() as $filter) {
+			if ($filter instanceof HashableInterface) {
+				$cacheKey .= $filter->hash();
+			} else {
+				$cacheKey .= serialize($filter);
+			}
+		}
+
+		if ($values = $asset->getValues()) {
+			asort($values);
+			$cacheKey .= serialize($values);
+		}
+
+		return md5($cacheKey);
 	}
 
 }
