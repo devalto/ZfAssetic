@@ -212,11 +212,6 @@ abstract class ZfAssetic_ViewHelper_AbstractAsset {
 			}
 		}
 
-		if ($values = $asset->getValues()) {
-			asort($values);
-			$cacheKey .= serialize($values);
-		}
-
 		return md5($cacheKey);
 	}
 
